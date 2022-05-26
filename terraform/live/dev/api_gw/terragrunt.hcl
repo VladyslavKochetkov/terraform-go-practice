@@ -14,5 +14,5 @@ EOF
 }
 
 inputs = {
-  api_gw_name = "test_go"
+  api_gw_name = "ws-testing"
 }
