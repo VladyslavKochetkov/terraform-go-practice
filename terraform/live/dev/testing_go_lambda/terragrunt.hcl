@@ -14,7 +14,7 @@ EOF
 }
 
 inputs = {
-  data_source_path = "${get_repo_root()}/lambda_code/testing_go/main"
+  data_source_path = "${get_repo_root()}/lambda_code/testing_go/lambda_source.zip"
   lambda_name      = "testing_go"
   lambda_runtime   = "go1.x"
   lambda_handler   = "main"

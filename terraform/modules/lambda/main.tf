@@ -71,17 +71,17 @@ resource "aws_s3_bucket_versioning" "code_source_versioning" {
   }
 }
 
-resource "archive_file" "code_storage_item_source" {
-  type        = "zip"
-  output_path = "./lambda_source.zip"
-  source_dir  = var.data_source_path
-}
+# resource "archive_file" "code_storage_item_source" {
+#   type        = "zip"
+#   output_path = "./lambda_source.zip"
+#   source_dir  = var.data_source_path
+# }
 
 resource "aws_s3_object" "code_storge_item" {
   bucket = aws_s3_bucket.code_storage.bucket
   key    = "${local.lambda_name}-source.zip"
-  source = archive_file.code_storage_item_source.output_path
-  etag   = filemd5(archive_file.code_storage_item_source.output_path)
+  source = var.data_source_path
+  etag   = filemd5(var.data_source_path)
 }
 
 resource "aws_lambda_function" "lambda_function" {
